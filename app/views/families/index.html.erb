@@ -1,0 +1,30 @@
+<h1>Listing families</h1>
+
+<table>
+  <tr>
+    <th>Parent names</th>
+    <th>Picture url</th>
+    <th>Active</th>
+    <th>Sponsored</th>
+    <th>Monthly need</th>
+    <th>Year joined</th>
+  </tr>
+
+<% @families.each do |family| %>
+  <tr>
+    <td><%=h family.parent_names %></td>
+    <td><%=h family.picture_url %></td>
+    <td><%=h family.active %></td>
+    <td><%=h family.sponsored %></td>
+    <td><%=h family.monthly_need %></td>
+    <td><%=h family.year_joined %></td>
+    <td><%= link_to 'Show', family %></td>
+    <td><%= link_to 'Edit', edit_family_path(family) %></td>
+    <td><%= link_to 'Destroy', family, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New family', new_family_path %>

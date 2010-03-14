@@ -1,0 +1,36 @@
+<h1>Editing family</h1>
+
+<% form_for(@family) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :parent_names %><br />
+    <%= f.text_field :parent_names %>
+  </p>
+  <p>
+    <%= f.label :picture_url %><br />
+    <%= f.text_field :picture_url %>
+  </p>
+  <p>
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.label :sponsored %><br />
+    <%= f.check_box :sponsored %>
+  </p>
+  <p>
+    <%= f.label :monthly_need %><br />
+    <%= f.text_field :monthly_need %>
+  </p>
+  <p>
+    <%= f.label :year_joined %><br />
+    <%= f.text_field :year_joined %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @family %> |
+<%= link_to 'Back', families_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  parent_names: MyString
+  picture_url: MyString
+  active: false
+  sponsored: false
+  monthly_need: 9.99
+  year_joined: 
+
+two:
+  parent_names: MyString
+  picture_url: MyString
+  active: false
+  sponsored: false
+  monthly_need: 9.99
+  year_joined: 

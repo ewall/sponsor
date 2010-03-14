@@ -1,0 +1,33 @@
+<p>
+  <b>Parent names:</b>
+  <%=h @family.parent_names %>
+</p>
+
+<p>
+  <b>Picture url:</b>
+  <%=h @family.picture_url %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @family.active %>
+</p>
+
+<p>
+  <b>Sponsored:</b>
+  <%=h @family.sponsored %>
+</p>
+
+<p>
+  <b>Monthly need:</b>
+  <%=h @family.monthly_need %>
+</p>
+
+<p>
+  <b>Year joined:</b>
+  <%=h @family.year_joined %>
+</p>
+
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>

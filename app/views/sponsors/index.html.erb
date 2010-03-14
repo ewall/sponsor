@@ -1,0 +1,44 @@
+<h1>Listing sponsors</h1>
+
+<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Street address1</th>
+    <th>Street address2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zipcode</th>
+    <th>Phone1</th>
+    <th>Phone2</th>
+    <th>Email1</th>
+    <th>Email2</th>
+    <th>Active</th>
+    <th>New</th>
+  </tr>
+
+<% @sponsors.each do |sponsor| %>
+  <tr>
+    <td><%=h sponsor.firstname %></td>
+    <td><%=h sponsor.lastname %></td>
+    <td><%=h sponsor.street_address1 %></td>
+    <td><%=h sponsor.street_address2 %></td>
+    <td><%=h sponsor.city %></td>
+    <td><%=h sponsor.state %></td>
+    <td><%=h sponsor.zipcode %></td>
+    <td><%=h sponsor.phone1 %></td>
+    <td><%=h sponsor.phone2 %></td>
+    <td><%=h sponsor.email1 %></td>
+    <td><%=h sponsor.email2 %></td>
+    <td><%=h sponsor.active %></td>
+    <td><%=h sponsor.new %></td>
+    <td><%= link_to 'Show', sponsor %></td>
+    <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
+    <td><%= link_to 'Destroy', sponsor, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New sponsor', new_sponsor_path %>

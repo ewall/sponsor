@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
+	# prettify the CanCan permissions errors
+#  rescue_from CanCan::AccessDenied do |exception|
+#    flash[:error] = "Access denied!"
+#    redirect_to root_url
+#  end
+
 	helper_method :current_user  
   
 	private  

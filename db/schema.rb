@@ -9,7 +9,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100314180445) do
+ActiveRecord::Schema.define(:version => 20100314210341) do
+
+  create_table "families", :force => true do |t|
+    t.string   "parent_names", :limit => 50,                                                   :null => false
+    t.string   "picture_url",  :limit => 100
+    t.boolean  "active",                                                    :default => true
+    t.boolean  "sponsored",                                                 :default => false
+    t.decimal  "monthly_need",                :precision => 5, :scale => 2
+    t.datetime "year_joined"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sponsors", :force => true do |t|
+    t.string   "firstname",       :limit => 50
+    t.string   "lastname",        :limit => 50
+    t.string   "street_address1", :limit => 50
+    t.string   "street_address2", :limit => 50
+    t.string   "city",            :limit => 50
+    t.string   "state",           :limit => 2
+    t.integer  "zipcode",         :limit => 5,  :precision => 5, :scale => 0
+    t.string   "phone1",          :limit => 15
+    t.string   "phone2",          :limit => 15
+    t.string   "email1",          :limit => 50
+    t.string   "email2",          :limit => 50
+    t.boolean  "active",                                                      :default => false
+    t.boolean  "new",                                                         :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -19,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20100314180445) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
 end
