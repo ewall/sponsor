@@ -115,6 +115,6 @@ admins only:
 STEPS:
 git init
 script/generate rspec
-script/generate rspec_scaffold family parent_names:string picture_url:string active:boolean sponsored:boolean monthly_need:decimal year_joined:integer
+script/generate rspec_scaffold family parent_names:string picture_url:string active:boolean sponsored:boolean monthly_need:decimal year_joined:datetimes
 rake db:migrate
 
