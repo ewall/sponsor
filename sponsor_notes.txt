@@ -1,0 +1,120 @@
+FAMA Family Sponsorship app notes
+
+
+Description: FAMA is supporting Twa pygmie families in Burundi by sending the children to school and giving the families food
+  as an incentive to stay put and keep the kids in school (rather than removing them so they can be begging for alms).
+	This web app would allow potential donors to look through a list of families and input their contact info. On the back-end,
+	it would allow FAMA workers to keep track of donors, payments histories and reminders, supported family status, etc.
+	
+
+USERS:
+
+1) potential sponsor --> no login, essentially read-only access to just the list of families
+2) admin --> must login, can view & edit families, sponsors, transactions, etc.
+
+
+DATA:
+
+Families
+	* has_many children
+	- active? (default true)
+	- sponsored? (yes|no|pending)
+	- parent names
+	- picture (URL?)
+	- monthly cost
+	- region --> should be new model?
+	- location --> should be new model?
+	- year joined program
+  - ? has a house
+
+--> Children (? or Family Members)
+  * (family_id)
+	- name(s)
+	- age (optional)
+	- year in school
+	- school
+
+Regions
+	* has_many locations
+	- name
+	- description
+	- map URL
+	
+--> Locations
+	* (region_id)
+	- name
+	- description
+
+Sponsors 
+  * many-to-many relation with Families
+  * has_many Payments
+  - active? (default false)
+	- new? (default true)
+	- mr/mrs/m&m/dr/ms (how to do this?)
+	- firstname
+	- lastname
+	- streetaddress1
+	- streetaddress2
+	- city
+	- state
+	- zipcode
+	- phone1
+	- phone2
+	- email1
+	- email2
+	- ? startdate
+	- ? enddate	
+	- ? total monthly payment (could be calculated from querying all sponsored families)
+	- ? last contact date (should update when email or letter is sent)
+		
+--> Payments
+	* (sponsor_id)
+	- date
+	- amount
+
+
+VIEWS:
+
+default: Families
+	read-only w/o login, admins can edit
+	link_to region & location descriptions (both on one page?)
+
+Sponsor self-enrollment:
+	potential sponsor chooses a family & clicks the "Sponsor this Family" button, which opens
+	form to input their contact info, etc. --> creates new Sponsor, notifies by email?
+
+admins only:
+
+	(easy:)
+	- list view of Families, link_to new/edit/del, use active? filter w/ checkbox
+	- list view of Sponsors, link_to new/edit/del, use active? filter w/ checkbox
+	- list view of Payments, link_to new/edit/del
+
+	(query-based:)
+	- new Sponsors
+		--> processing them removes the new flag, sets the last contact date
+	- Sponsors with overdue payments
+		--> export to CSV for mail merge
+		--> email reminders directly
+	- budgeting: needed $ vs incoming $
+		--> ? export or email report
+	- aggregate payments by month
+		--> export report as CSV
+
+	(later:)
+	- spreadsheet/table editing view of Families
+	- spreadsheet/table editing view of Sponsors
+	- spreadsheet/table editing view of Payments
+	- calendar view of Payments (for one Sponsor at a time)
+
+	(upload/download:)
+	- create Sponsors by importing CSV
+	- create Families by importing CSV
+
+
+STEPS:
+git init
+script/generate rspec
+script/generate rspec_scaffold family parent_names:string picture_url:string active:boolean sponsored:boolean monthly_need:decimal year_joined:integer
+rake db:migrate
+
