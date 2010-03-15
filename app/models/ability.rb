@@ -3,7 +3,7 @@ class Ability
 	include CanCan::Ability
 
   def initialize(user)
-#    user ||= User.new
+    # user ||= User.new
 		if user.nil?
 			can :read, Family
 			can :create, Sponsor
@@ -15,6 +15,7 @@ class Ability
 
 		elsif user.role? :user
 			# cannot [:create, :update, :destroy], User
+			cannot :manage, User
 			can :manage, :all
 
 		else

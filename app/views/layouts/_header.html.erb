@@ -1,11 +1,23 @@
 <div id="header" class="round">
   <ul class="navigation round">
+	
 	<% if current_user %>
-		<li><%= link_to "Edit profile", edit_user_path(:current) %></li>
+
+		<% if false %>
+		  <li><%= link_to "Edit profile", edit_user_path(:current) %></li>
+    <% end %>
+		
 		<li><%= link_to "Logout", logout_path %></li>
+
 	<% else %>
-		<li><%= link_to "Register", new_user_path %></li>
+		
+		<% if can? :create, User %>
+			<li><%= link_to "Register", new_user_path %></li>
+		<% end %>
+		
 		<li><%= link_to "Log in", login_path %></li>
+
 	<% end %>
+
   </ul>
 </div>

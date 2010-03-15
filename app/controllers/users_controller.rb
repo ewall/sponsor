@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+	# apply permission & pre-load the instance variables
+	load_and_authorize_resource
+
   def new  
     @user = User.new  
   end  

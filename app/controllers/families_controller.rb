@@ -1,8 +1,8 @@
 class FamiliesController < ApplicationController
 
+	# apply permission & pre-load the instance variables
 	load_and_authorize_resource
-	# this should pre-load the @family variable in question
-	
+
 	# GET /families
   # GET /families.xml
   def index
@@ -86,4 +86,5 @@ class FamiliesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end
