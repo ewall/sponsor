@@ -6,8 +6,7 @@ class SponsorsController < ApplicationController
 	# GET /sponsors
   # GET /sponsors.xml
   def index
-    @sponsors = Sponsor.all
-
+    @sponsors = Sponsor.paginate(:per_page => 5, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sponsors }
@@ -18,7 +17,6 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1.xml
   def show
     @sponsor ||= Sponsor.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @sponsor }
@@ -29,7 +27,6 @@ class SponsorsController < ApplicationController
   # GET /sponsors/new.xml
   def new
     @sponsor = Sponsor.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sponsor }
@@ -45,7 +42,6 @@ class SponsorsController < ApplicationController
   # POST /sponsors.xml
   def create
     @sponsor = Sponsor.new(params[:sponsor])
-
     respond_to do |format|
       if @sponsor.save
         flash[:notice] = 'Sponsor was successfully created.'
@@ -62,7 +58,6 @@ class SponsorsController < ApplicationController
   # PUT /sponsors/1.xml
   def update
     @sponsor ||= Sponsor.find(params[:id])
-
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
         flash[:notice] = 'Sponsor was successfully updated.'
@@ -80,7 +75,6 @@ class SponsorsController < ApplicationController
   def destroy
     @sponsor ||= Sponsor.find(params[:id])
     @sponsor.destroy
-
     respond_to do |format|
       format.html { redirect_to(sponsors_url) }
       format.xml  { head :ok }

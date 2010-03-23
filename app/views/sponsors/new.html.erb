@@ -1,63 +1,18 @@
-<h1>New sponsor</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", sponsors_path  %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_sponsor_path %></li>
+    </ul>
+  </div>          
+  <div class="content">            
+    <h2 class="title"><%= t("web-app-theme.new", :default => "New")%>  Sponsor</h2>
+    <div class="inner">
+      <% form_for :sponsor, :url => sponsors_path, :html => { :class => :form } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
-<% form_for(@sponsor) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </p>
-  <p>
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </p>
-  <p>
-    <%= f.label :street_address1 %><br />
-    <%= f.text_field :street_address1 %>
-  </p>
-  <p>
-    <%= f.label :street_address2 %><br />
-    <%= f.text_field :street_address2 %>
-  </p>
-  <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </p>
-  <p>
-    <%= f.label :zipcode %><br />
-    <%= f.text_field :zipcode %>
-  </p>
-  <p>
-    <%= f.label :phone1 %><br />
-    <%= f.text_field :phone1 %>
-  </p>
-  <p>
-    <%= f.label :phone2 %><br />
-    <%= f.text_field :phone2 %>
-  </p>
-  <p>
-    <%= f.label :email1 %><br />
-    <%= f.text_field :email1 %>
-  </p>
-  <p>
-    <%= f.label :email2 %><br />
-    <%= f.text_field :email2 %>
-  </p>
-  <p>
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </p>
-  <p>
-    <%= f.label :new %><br />
-    <%= f.check_box :new %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', sponsors_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

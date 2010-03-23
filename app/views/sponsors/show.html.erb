@@ -1,68 +1,84 @@
-<p>
-  <b>Firstname:</b>
-  <%=h @sponsor.firstname %>
-</p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", sponsors_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_sponsor_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", sponsor_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname")) %>:</b>
+          <%= @sponsor.firstname %>
+        </p>
 
-<p>
-  <b>Lastname:</b>
-  <%=h @sponsor.lastname %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.lastname", :default => t("activerecord.labels.lastname", :default => "Lastname")) %>:</b>
+          <%= @sponsor.lastname %>
+        </p>
 
-<p>
-  <b>Street address1:</b>
-  <%=h @sponsor.street_address1 %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.street_address1", :default => t("activerecord.labels.street_address1", :default => "Street address1")) %>:</b>
+          <%= @sponsor.street_address1 %>
+        </p>
 
-<p>
-  <b>Street address2:</b>
-  <%=h @sponsor.street_address2 %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.street_address2", :default => t("activerecord.labels.street_address2", :default => "Street address2")) %>:</b>
+          <%= @sponsor.street_address2 %>
+        </p>
 
-<p>
-  <b>City:</b>
-  <%=h @sponsor.city %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.city", :default => t("activerecord.labels.city", :default => "City")) %>:</b>
+          <%= @sponsor.city %>
+        </p>
 
-<p>
-  <b>State:</b>
-  <%=h @sponsor.state %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.state", :default => t("activerecord.labels.state", :default => "State")) %>:</b>
+          <%= @sponsor.state %>
+        </p>
 
-<p>
-  <b>Zipcode:</b>
-  <%=h @sponsor.zipcode %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.zipcode", :default => t("activerecord.labels.zipcode", :default => "Zipcode")) %>:</b>
+          <%= @sponsor.zipcode %>
+        </p>
 
-<p>
-  <b>Phone1:</b>
-  <%=h @sponsor.phone1 %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.phone1", :default => t("activerecord.labels.phone1", :default => "Phone1")) %>:</b>
+          <%= @sponsor.phone1 %>
+        </p>
 
-<p>
-  <b>Phone2:</b>
-  <%=h @sponsor.phone2 %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.phone2", :default => t("activerecord.labels.phone2", :default => "Phone2")) %>:</b>
+          <%= @sponsor.phone2 %>
+        </p>
 
-<p>
-  <b>Email1:</b>
-  <%=h @sponsor.email1 %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.email1", :default => t("activerecord.labels.email1", :default => "Email1")) %>:</b>
+          <%= @sponsor.email1 %>
+        </p>
 
-<p>
-  <b>Email2:</b>
-  <%=h @sponsor.email2 %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.email2", :default => t("activerecord.labels.email2", :default => "Email2")) %>:</b>
+          <%= @sponsor.email2 %>
+        </p>
 
-<p>
-  <b>Active:</b>
-  <%=h @sponsor.active %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.active", :default => t("activerecord.labels.active", :default => "Active")) %>:</b>
+          <%= @sponsor.active %>
+        </p>
 
-<p>
-  <b>New:</b>
-  <%=h @sponsor.new %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.sponsor.new", :default => t("activerecord.labels.new", :default => "New")) %>:</b>
+          <%= @sponsor.new %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to "#{image_tag("web-app-theme/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}")} #{t("web-app-theme.edit", :default=> "Edit")}", edit_sponsor_path(@sponsor), :class => "button" %> 
+        <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}")} #{t("web-app-theme.delete", :default => "Delete")}", sponsor_path(@sponsor), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
 
-
-<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
-<%= link_to 'Back', sponsors_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

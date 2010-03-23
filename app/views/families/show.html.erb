@@ -1,33 +1,49 @@
-<p>
-  <b>Parent names:</b>
-  <%=h @family.parent_names %>
-</p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", families_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_family_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", family_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.family.parent_names", :default => t("activerecord.labels.parent_names", :default => "Parent names")) %>:</b>
+          <%= @family.parent_names %>
+        </p>
 
-<p>
-  <b>Picture url:</b>
-  <%=h @family.picture_url %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.family.picture_url", :default => t("activerecord.labels.picture_url", :default => "Picture url")) %>:</b>
+          <%= @family.picture_url %>
+        </p>
 
-<p>
-  <b>Active:</b>
-  <%=h @family.active %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.family.active", :default => t("activerecord.labels.active", :default => "Active")) %>:</b>
+          <%= @family.active %>
+        </p>
 
-<p>
-  <b>Sponsored:</b>
-  <%=h @family.sponsored %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.family.sponsored", :default => t("activerecord.labels.sponsored", :default => "Sponsored")) %>:</b>
+          <%= @family.sponsored %>
+        </p>
 
-<p>
-  <b>Monthly need:</b>
-  <%=h @family.monthly_need %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.family.monthly_need", :default => t("activerecord.labels.monthly_need", :default => "Monthly need")) %>:</b>
+          <%= @family.monthly_need %>
+        </p>
 
-<p>
-  <b>Year joined:</b>
-  <%=h @family.year_joined %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.family.year_joined", :default => t("activerecord.labels.year_joined", :default => "Year joined")) %>:</b>
+          <%= @family.year_joined %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to "#{image_tag("web-app-theme/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}")} #{t("web-app-theme.edit", :default=> "Edit")}", edit_family_path(@family), :class => "button" %> 
+        <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}")} #{t("web-app-theme.delete", :default => "Delete")}", family_path(@family), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
 
-
-<%= link_to 'Edit', edit_family_path(@family) %> |
-<%= link_to 'Back', families_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

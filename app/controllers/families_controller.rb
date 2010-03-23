@@ -6,8 +6,7 @@ class FamiliesController < ApplicationController
 	# GET /families
   # GET /families.xml
   def index
-    @families = Family.all
-
+		@families = Family.paginate(:per_page => 5, :page => params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @families }
@@ -18,7 +17,6 @@ class FamiliesController < ApplicationController
   # GET /families/1.xml
   def show
     @family ||= Family.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @family }
@@ -29,7 +27,6 @@ class FamiliesController < ApplicationController
   # GET /families/new.xml
   def new
     @family = Family.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @family }
@@ -45,7 +42,6 @@ class FamiliesController < ApplicationController
   # POST /families.xml
   def create
     @family = Family.new(params[:family])
-
     respond_to do |format|
       if @family.save
         flash[:notice] = 'Family was successfully created.'
@@ -62,7 +58,6 @@ class FamiliesController < ApplicationController
   # PUT /families/1.xml
   def update
 		@family ||= Family.find(params[:id])
-
     respond_to do |format|
       if @family.update_attributes(params[:family])
         flash[:notice] = 'Family was successfully updated.'
@@ -80,7 +75,6 @@ class FamiliesController < ApplicationController
   def destroy
 		@family ||= Family.find(params[:id])
     @family.destroy
-
     respond_to do |format|
       format.html { redirect_to(families_url) }
       format.xml  { head :ok }

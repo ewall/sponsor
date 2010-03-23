@@ -1,34 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title><%= title %></title>
-		<%= render 'layouts/stylesheets' %>
-  </head>
-  <body>
-
-		<div class="container">
-
-      <%= render 'layouts/header' %>
-
-			<div id="content" class="round">
-				<p style="color: green"><%= flash[:notice] %></p>
-
-				<% if flash[:error] %>
-					<div id="errorExplanation">
-						<h2>Error</h2>
-						<p><%= flash[:error] %></p>
-					</div>
-				<% end %>
-
-        <%= yield %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FAMA Family Sponsorships</title>
+	<%= stylesheet_link_tag "web_app_theme", "web_app_theme_override", "themes/olive/style", :cache => true %>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">FAMA Family Sponsorships</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+					<% if current_user %>
+						<li><%= link_to_if (can? :create, User), t("web-app-theme.register", :default => "Create User"), new_user_path %></li>
+						<!--li><%= link_to "Edit profile", edit_user_path(:current) %></li-->
+						<li><a href="/logout" class="logout"><%= t("web-app-theme.logout", :default => "Logout") %></a></li>
+					<% else %>
+						<li><%= link_to t("web-app-theme.login", :default => "Login"), login_path %></li>
+					<% end %>
+        </ul>
+      </div>      
+      <div id="main-navigation">
+        <ul class="wat-cf"> <li class="<%= controller.controller_path == 'families' ? 'active' : '' %>"><a href="<%= families_path %>">Families</a></li> <li class="<%= controller.controller_path == 'sponsors' ? 'active' : '' %>"><a href="<%= sponsors_path %>">Sponsors</a></li></ul>
       </div>
-
-      <%= render 'layouts/footer' %>
-
-    </div>
-
-  </body>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> Your Site.</p>
+          </div>      
+        </div>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>    
+  </div>
+</body>
 </html>

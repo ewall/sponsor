@@ -1,36 +1,19 @@
-<h1>Editing family</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", families_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_family_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_family_path %></li>
+    </ul>
+  </div>          
+  <div class="content">            
+    <h2 class="title"><%= t("web-app-theme.edit", :default => "Edit") %> Family</h2>
+    <div class="inner">
+      <% form_for @family, :url => family_path(@family), :html => { :class => :form } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
-<% form_for(@family) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :parent_names %><br />
-    <%= f.text_field :parent_names %>
-  </p>
-  <p>
-    <%= f.label :picture_url %><br />
-    <%= f.text_field :picture_url %>
-  </p>
-  <p>
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </p>
-  <p>
-    <%= f.label :sponsored %><br />
-    <%= f.check_box :sponsored %>
-  </p>
-  <p>
-    <%= f.label :monthly_need %><br />
-    <%= f.text_field :monthly_need %>
-  </p>
-  <p>
-    <%= f.label :year_joined %><br />
-    <%= f.text_field :year_joined %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @family %> |
-<%= link_to 'Back', families_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

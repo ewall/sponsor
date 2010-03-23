@@ -1,0 +1,43 @@
+
+  <div class="group">
+    <%= f.label :parent_names, t("activerecord.attributes.family.parent_names", :default => "Parent names"), :class => :label %>
+    <%= f.text_field :parent_names, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :picture_url, t("activerecord.attributes.family.picture_url", :default => "Picture url"), :class => :label %>
+    <%= f.text_field :picture_url, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :active, t("activerecord.attributes.family.active", :default => "Active"), :class => :label %>
+    <%= f.check_box :active, :class => 'check_box' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :sponsored, t("activerecord.attributes.family.sponsored", :default => "Sponsored"), :class => :label %>
+    <%= f.check_box :sponsored, :class => 'check_box' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :monthly_need, t("activerecord.attributes.family.monthly_need", :default => "Monthly need"), :class => :label %>
+    <%= f.text_field :monthly_need, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
+    <%= f.label :year_joined, t("activerecord.attributes.family.year_joined", :default => "Year joined"), :class => :label %>
+    <%= f.datetime_select :year_joined, :class => 'datetime_select' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>  
+  <%= link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}")} #{t("web-app-theme.cancel", :default => "Cancel")}", families_path, :class => "button" %> 
+</div>
