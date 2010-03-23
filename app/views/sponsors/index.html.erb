@@ -6,44 +6,10 @@
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Sponsors</h2>
-    <div class="inner">
-      <table class="table">
-        <tr>             
-          <th class="first">ID</th>
-										<th>
-					<%= t("activerecord.attributes.sponsor.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname")) %>
-</th>
-					          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
-          <th class="last">&nbsp;</th>
-        </tr>
-        <% @sponsors.each do |sponsor| -%>
-        <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= sponsor.id %>
-          </td>
-										<td>
-						<%= link_to sponsor.firstname, sponsor_path(sponsor) %>
-					</td>
-										<td>
-            <%= sponsor.created_at %>
-          </td>
-          <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", sponsor_path(sponsor) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_sponsor_path(sponsor) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", sponsor_path(sponsor), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-          </td>
-        </tr>          
-        <% end -%>
-      </table>
-      <div class="actions-bar wat-cf">
-        <div class="actions">
-        </div>
-        
-        <%= will_paginate @sponsors  %>
-        
-      </div>
-    </div>
+		<h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Sponsors</h2>
+
+<%= render 'sponsors/list' %>
+
   </div>
 </div>
 
