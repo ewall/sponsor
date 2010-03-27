@@ -9,17 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100314210341) do
+ActiveRecord::Schema.define(:version => 20100327013255) do
 
   create_table "families", :force => true do |t|
-    t.string   "parent_names", :limit => 50,                                                   :null => false
-    t.string   "picture_url",  :limit => 100
-    t.boolean  "active",                                                    :default => true
-    t.boolean  "sponsored",                                                 :default => false
-    t.decimal  "monthly_need",                :precision => 5, :scale => 2
+    t.string   "parent_names",       :limit => 50,                    :null => false
+    t.boolean  "active",                           :default => true
+    t.boolean  "sponsored",                        :default => false
+    t.decimal  "monthly_need"
     t.datetime "year_joined"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   create_table "sponsors", :force => true do |t|

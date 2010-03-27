@@ -2,10 +2,8 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-										<th>
-					<%= t("activerecord.attributes.family.parent_names", :default => t("activerecord.labels.parent_names", :default => "Parent_names")) %>
-</th>
-					          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+					<th><%= t("activerecord.attributes.family.parent_names", :default => t("activerecord.labels.parent_names", :default => "Parent_names")) %></th>
+					<th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @families.each do |family| -%>
@@ -13,10 +11,10 @@
           <td>
             <%= family.id %>
           </td>
-										<td>
+					<td>
 						<%= link_to family.parent_names, family_path(family) %>
 					</td>
-										<td>
+					<td>
             <%= family.created_at %>
           </td>
           <td class="last">
@@ -30,8 +28,6 @@
       <div class="actions-bar wat-cf">
         <div class="actions">
         </div>
-        
         <%= will_paginate @families  %>
-        
       </div>
     </div>

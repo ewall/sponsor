@@ -3,3 +3,5 @@ log/*.log
 tmp/**/*
 doc/api
 doc/ap
+public/families
+public/system

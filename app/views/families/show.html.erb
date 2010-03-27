@@ -15,8 +15,8 @@
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.family.picture_url", :default => t("activerecord.labels.picture_url", :default => "Picture url")) %>:</b>
-          <%= @family.picture_url %>
+          <b><%= t("activerecord.attributes.family.photo", :default => t("activerecord.labels.photo", :default => "Photo")) %>:</b>
+          <%= image_tag @family.photo.url(:thumb), :align => "top" %>
         </p>
 
         <p>
