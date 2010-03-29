@@ -1,33 +1,33 @@
-    <div class="inner" id="list">
-      <table class="table">
-        <tr>             
-          <th class="first">ID</th>
-					<th><%= t("activerecord.attributes.family.parent_names", :default => t("activerecord.labels.parent_names", :default => "Parent_names")) %></th>
-					<th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
-          <th class="last">&nbsp;</th>
-        </tr>
-        <% @families.each do |family| -%>
-        <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= family.id %>
-          </td>
-					<td>
-						<%= link_to family.parent_names, family_path(family) %>
-					</td>
-					<td>
-            <%= family.created_at %>
-          </td>
-          <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", family_path(family) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_family_path(family) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", family_path(family), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-          </td>
-        </tr>          
-        <% end -%>
-      </table>
-      <div class="actions-bar wat-cf">
-        <div class="actions">
-        </div>
-        <%= will_paginate @families  %>
-      </div>
-    </div>
+			<div id="list">
+				<table class="table">
+					<tr>             
+						<th class="first">ID</th>
+						<th><%= t("activerecord.attributes.family.parent_names", :default => t("activerecord.labels.parent_names", :default => "Parent_names")) %></th>
+						<th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+						<th class="last">&nbsp;</th>
+					</tr>
+					<% @families.each do |family| -%>
+					<tr class="<%= cycle("odd", "even") %>">
+						<td>
+							<%= family.id %>
+						</td>
+						<td>
+							<%= link_to family.parent_names, family_path(family) %>
+						</td>
+						<td>
+							<%= family.created_at %>
+						</td>
+						<td class="last">
+							<%= link_to "#{t("web-app-theme.show", :default => "Show")}", family_path(family) %> |
+							<%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_family_path(family) %> |
+							<%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", family_path(family), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+						</td>
+					</tr>          
+					<% end -%>
+				</table>
+				<div class="actions-bar wat-cf">
+					<div class="actions">
+					</div>
+					<%= will_paginate @families  %>
+				</div>
+			</div>
