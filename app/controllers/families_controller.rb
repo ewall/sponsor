@@ -10,11 +10,7 @@ class FamiliesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @families }
-			format.js {
-				render :update do |page|
-					page.replace 'list', :partial => 'list'
-				end
-			}
+			format.js # index.js.erb
     end
   end
 

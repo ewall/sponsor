@@ -2,10 +2,10 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-										<th>
-					<%= t("activerecord.attributes.sponsor.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname")) %>
-</th>
-					          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+					<th>
+						<%= t("activerecord.attributes.sponsor.firstname", :default => t("activerecord.labels.firstname", :default => "Firstname")) %>
+					</th>
+					<th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @sponsors.each do |sponsor| -%>
@@ -13,10 +13,10 @@
           <td>
             <%= sponsor.id %>
           </td>
-										<td>
+					<td>
 						<%= link_to sponsor.firstname, sponsor_path(sponsor) %>
 					</td>
-										<td>
+					<td>
             <%= sponsor.created_at %>
           </td>
           <td class="last">
@@ -30,9 +30,6 @@
       <div class="actions-bar wat-cf">
         <div class="actions">
         </div>
-        
         <%= will_paginate @sponsors  %>
-        
       </div>
     </div>
-
